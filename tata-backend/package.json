@@ -1,0 +1,29 @@
+{
+  "name": "tata-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "aws-sdk": "^2.1178.0",
+    "axios": "^0.27.2",
+    "http-errors": "^2.0.0",
+    "source-map-support": "^0.5.21",
+    "uuid": "^8.3.2",
+    "validator": "^13.7.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.18.9",
+    "@babel/preset-env": "^7.18.9",
+    "babel-loader": "^8.2.5",
+    "babel-plugin-source-map-support": "^2.2.0",
+    "serverless-webpack": "^5.7.1",
+    "webpack": "^5.73.0",
+    "webpack-node-externals": "^3.0.0"
+  }
+}

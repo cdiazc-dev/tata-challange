@@ -1,0 +1,13 @@
+CharacterTableIAM:
+  Effect: Allow
+  Action:
+    - dynamodb:Get*
+    - dynamodb:Query
+    - dynamodb:Scan
+    - dynamodb:PutItem
+    - dynamodb:Update*
+    - dynamodb:Delete*
+    - dynamodb:BatchWrite*
+  Resource:
+    - ${self:custom.CharacterTable.arn}
+    - ${self:custom.FilmTable.arn}

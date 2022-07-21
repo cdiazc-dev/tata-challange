@@ -1,0 +1,88 @@
+service: tata-backend
+
+
+plugins:
+    - serverless-webpack
+
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  memorySize: 256
+  stage: ${opt:stage, 'dev'}
+  region: us-east-1
+  environment:
+    CHARACTER_TABLE_NAME: ${self:custom.CharacterTable.name}
+    FILM_TABLE_NAME: ${self:custom.FilmTable.name}
+    SWAPI_URL_BASE: https://swapi.py4e.com/api/
+  iamRoleStatements:
+    - ${file(iam/CharacterTableIAM.yml):CharacterTableIAM}
+
+
+resources:
+  Resources:
+    CharacterTable: ${file(resources/CharacterTable.yml):CharacterTable}
+    FilmTable: ${file(resources/FilmTable.yml):FilmTable}
+
+
+functions:
+  hello:
+    handler: src/handlers/hello.handler
+    events:
+      - http:
+          method: GET
+          path: /hello
+  read_character:
+    handler: src/handlers/character.handler
+    events:
+      - http:
+          method: GET
+          path: /characters
+  read_character_by_id:
+    handler: src/handlers/character.handler
+    events:
+      - http:
+          method: GET
+          path: /characters/{id}
+  create_character:
+    handler: src/handlers/character.handler
+    events:
+      - http:
+          method: POST
+          path: /characters
+  update_character:
+    handler: src/handlers/character.handler
+    events:
+      - http:
+          method: PUT
+          path: /characters/{id}
+  delete_character:
+    handler: src/handlers/character.handler
+    events:
+      - http:
+          method: DELETE
+          path: /characters/{id}
+  read_films:
+    handler: src/handlers/film.handler
+    events:
+      - http:
+          method: GET
+          path: /films
+  bulk_create_films:
+    handler: src/handlers/film.handler
+    events:
+      - http:
+          method: POST
+          path: /films/bulk
+
+
+custom:
+  CharacterTable:
+    name: !Ref CharacterTable
+    arn: !GetAtt CharacterTable.Arn
+  FilmTable:
+    name: !Ref FilmTable
+    arn: !GetAtt FilmTable.Arn
+  webpack:
+      webpackConfig: ./webpack.config.js
+      includeModules: true

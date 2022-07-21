@@ -1,0 +1,6 @@
+{
+    "Headers": {
+    },
+    "httpMethod": "POST",
+    "Body": "{\"nombre\":\"Carlos\",\"altura\":\"169\",\"masa\":\"78\",\"color_pelo\":\"negro\",\"color_piel\":\"morena\",\"color_ojo\":\"negro\",\"anio_nacimiento\":\"1997\",\"genero\":\"masculino\"}"
+}
