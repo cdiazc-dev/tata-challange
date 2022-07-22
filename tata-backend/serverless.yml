@@ -16,7 +16,7 @@ provider:
     FILM_TABLE_NAME: ${self:custom.FilmTable.name}
     SWAPI_URL_BASE: https://swapi.py4e.com/api/
   iamRoleStatements:
-    - ${file(iam/CharacterTableIAM.yml):CharacterTableIAM}
+    - ${file(iam/TablesIAM.yml):TablesIAM}
 
 
 resources:

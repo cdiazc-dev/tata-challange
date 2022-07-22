@@ -1,4 +1,4 @@
-CharacterTableIAM:
+TablesIAM:
   Effect: Allow
   Action:
     - dynamodb:Get*
