@@ -19,7 +19,7 @@ jobs:
         env:
           CI: true
         run: |
-          npm ci
+          npm install
       - name: test
         run: |
-          npm test
+          npm run test
