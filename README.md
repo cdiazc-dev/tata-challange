@@ -1,6 +1,6 @@
 # Tata challenge
 ## Nodejs AWS Lambda
-
+### Ejecución de aplicación
 Para iniciar con estre proyecto primero de deberá instalara Serverless Framework
 ```sh
 npm install -g serverless
@@ -20,16 +20,27 @@ Para poder ejecutar nuestras pruebas unitarias deberemos primero ubicarnos en nu
 ```sh
 cd tata-backend && npm run test
 ```
-## Plugins
+#### Ejecución de Lambda de forma local
+Si deseamos ejecutar nuestro Lambda de forma local tenemos las siguientes ejecuciones para probar.
+Tener encuenta para utilizar esto debemos tener configurado nuestro aws-cli, para que no ocurrá errores con las crendenciales de AWS al ingresar a DynamoDB
+```sh
+-- [GET] /characters
+sls invoke local -f read_character --path mocks/read_character.json -e CHARACTER_TABLE_NAME=CharacterTable-local -e FILM_TABLE_NAME=FilmTable-local -e SWAPI_URL_BASE=https://swapi.py4e.com/api/
+-- [GET] /characters/{id}
+sls invoke local -f read_character_by_id --path mocks/read_character_by_id.json -e CHARACTER_TABLE_NAME=CharacterTable-local -e FILM_TABLE_NAME=FilmTable-local -e SWAPI_URL_BASE=https://swapi.py4e.com/api/
+-- [POST] /characters
+sls invoke local -f create_character --path mocks/create_character.json -e CHARACTER_TABLE_NAME=CharacterTable-local -e FILM_TABLE_NAME=FilmTable-local -e SWAPI_URL_BASE=https://swapi.py4e.com/api/
+```
+### APIs
 
-Dillinger is currently extended with the following plugins.
-Instructions on how to use them in your own application are linked below.
+Información de las API creadas.
 
-| Plugin | README |
+| APIS | Información |
 | ------ | ------ |
-| Dropbox | [plugins/dropbox/README.md][PlDb] |
-| GitHub | [plugins/github/README.md][PlGh] |
-| Google Drive | [plugins/googledrive/README.md][PlGd] |
-| OneDrive | [plugins/onedrive/README.md][PlOd] |
-| Medium | [plugins/medium/README.md][PlMe] |
-| Google Analytics | [plugins/googleanalytics/README.md][PlGa] |
+|(200)[GET] /characters |Devuelve un array de elementos de personajes registrados en DynamoDB.|
+|(200)[GET] /characters/{id} |Devuelve un objeto con la información del personaje obtenida de DynamoDB.|
+|(201)[POST] /characters |Devuelve un objeto con un mensaje de confirmación del registro del nuevo personaje sobre DynamoDB.|
+|(201)[PUT] /characters |Devuelve un objeto con un mensaje de confirmación de la actulización del personaje sobre DynamoDB.|
+|(201)[DELETE] /characters/{id} |Devuelve un objeto con un mensaje de confirmación de la eliminación del personaje sobre DynamoDB.|
+|(200)[GET] /films |Devuelve un array de elementos con todas las películas registras en DynamoDB|
+|(200)[POST] //films/bulk |Hace una consulta a la API de Starts Wars obteniendo todas las películas y cargándolas a DynamoDB, esta api devuelve un mensaje de ejecución exitosa|

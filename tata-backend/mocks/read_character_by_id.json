@@ -1,0 +1,6 @@
+{
+    "Headers": {
+    },
+    "path": "/characters/uuid",
+    "httpMethod": "GET"
+}
