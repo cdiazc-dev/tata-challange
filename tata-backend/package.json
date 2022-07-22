@@ -15,7 +15,7 @@
     "test": "jest"
   },
   "keywords": [],
-  "author": "",
+  "author": "Carlos Díaz Chávez",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.18.9",
