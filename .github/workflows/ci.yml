@@ -10,16 +10,13 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '12'
-      - name: Open tata-backend
-        run: |
-          ls -la
-          cd tata-backend
-          ls -la
-      - name: npm ci
+      - name: npm install
         env:
           CI: true
         run: |
+          cd tata-backend
           npm install
       - name: test
         run: |
+          cd tata-backend
           npm run test
