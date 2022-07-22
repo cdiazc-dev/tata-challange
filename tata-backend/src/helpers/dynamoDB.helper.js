@@ -1,9 +1,12 @@
 import AWS from 'aws-sdk';
 import * as expressionDynamoDB from '../helpers/dynamoExpression.helper'
 
-let options = {}
+console.log('---------------------------------------------');
+console.log(process.env.CHARACTER_TABLE_NAME);
+console.log('---------------------------------------------');
+let options = {};
 
-if (true) {
+if (process.env.JEST_WORKER_ID) {
   options = {
     endpoint: 'http://localhost:8000',
     region: 'local-env',
@@ -12,7 +15,6 @@ if (true) {
 }
 
 const dynamoDB = new AWS.DynamoDB.DocumentClient(options);
-
 
 const DynamoDBHelper = {
 
