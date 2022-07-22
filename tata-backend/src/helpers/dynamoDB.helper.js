@@ -1,12 +1,18 @@
 import AWS from 'aws-sdk';
 import * as expressionDynamoDB from '../helpers/dynamoExpression.helper'
 
-console.log('---------------------------------------------');
-console.log(process.env.CHARACTER_TABLE_NAME);
-console.log('---------------------------------------------');
 let options = {};
 
 if (process.env.JEST_WORKER_ID) {
+  AWS.config.update({ 
+    region: 'local-env',
+    credentials: {
+      accessKeyId: 'accessKeyId',
+      secretAccessKey: 'secretAccessKey'
+    },
+    accessKeyId: 'accessKeyId', 
+    secretAccessKey: "secretAccessKey", 
+  });
   options = {
     endpoint: 'http://localhost:8000',
     region: 'local-env',
