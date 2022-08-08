@@ -15,7 +15,7 @@ describe('environmental variables', () => {
 
     test('Get characters', async() => {
         process.env = { ...OLD_ENV, ...{ CHARACTER_TABLE_NAME: 'CharacterTable-unittest' }}
-        expect.assertions(1);
+        expect.assertions(2);
         try {
             const response = await characterHandler.handler({
                 httpMethod: 'GET',
